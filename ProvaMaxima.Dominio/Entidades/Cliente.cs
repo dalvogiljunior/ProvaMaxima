@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProvaMaxima.Dominio.Entidades
 {
-    class Cliente:Entidade
+    public class Cliente:Entidade
     {
         public string Codigo { get; set; }
         public string Nome { get; set; }
