@@ -8,14 +8,14 @@ namespace ProvaMaxima.Dominio.Entidades
     public class Pedido: Entidade
     {
         public DateTime DataPedido { get; set; }
-        public Guid IdCliente { get; set; }
+        public Cliente Cliente { get; set; }
         public ICollection<ItemPedido> ItensPedidos { get; set; }
 
         public override void Validate()
         {
             LimparMensagensDeValidacao();
 
-            if (IdCliente == null)
+            if (Cliente == null)
                 AdicionarMensagemDeValidacao("O Cliente deve ser informado.");
 
             if (ItensPedidos == null || !ItensPedidos.Any())

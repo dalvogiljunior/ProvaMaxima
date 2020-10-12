@@ -1,13 +1,17 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProvaMaxima.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : Entidade
     {
-        public Guid Id { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
+
+        public override void Validate()
+        {
+        }
     }
 }

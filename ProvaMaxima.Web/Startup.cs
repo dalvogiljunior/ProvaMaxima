@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using ProvaMaxima.Dominio.Contratos;
+using ProvaMaxima.Dominio.Entidades;
+using ProvaMaxima.Repositorio.Contexto;
+using ProvaMaxima.Repositorio.Repositorios;
 
 namespace ProvaMaxima.Web
 {
@@ -27,6 +32,12 @@ namespace ProvaMaxima.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            //Configuração de instância MongoDB
+            services.Configure<MongoDbConfiguracao>(Configuration.GetSection(nameof(MongoDbConfiguracao)));
+            services.AddSingleton(s => new MongoDbContexto(s.GetRequiredService<IOptions<MongoDbConfiguracao>>()));
+
+            services.AddScoped<IRepositorioProduto, RepositorioProduto>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

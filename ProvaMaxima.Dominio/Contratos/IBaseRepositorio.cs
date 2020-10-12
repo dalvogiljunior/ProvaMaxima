@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProvaMaxima.Dominio.Contratos
 {
-    public interface IBaseRepositorio<T>: IDisposable where T:class
+    public interface IBaseRepositorio<T> where T : class
     {
         void Adicionar(T obj);
         T ObtenhaPorId(Guid id);
