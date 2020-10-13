@@ -15,4 +15,12 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+
+  usuarioLogado(): boolean {
+    return sessionStorage.getItem('autenticado') == '1';
+  }
+
+  sair() {
+    sessionStorage.removeItem('autenticado');
+  }
 }
