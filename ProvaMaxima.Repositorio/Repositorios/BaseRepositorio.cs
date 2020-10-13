@@ -6,6 +6,7 @@ using ProvaMaxima.Dominio.Entidades;
 using ProvaMaxima.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ProvaMaxima.Repositorio.Repositorios

@@ -19,6 +19,9 @@ namespace ProvaMaxima.Dominio.Entidades
 
             if (PrecoUnitario > 0)
                 AdicionarMensagemDeValidacao("O valor do produto deve ser maior que 0.");
+
+            if (string.IsNullOrEmpty(ImagemUrl))
+                AdicionarMensagemDeValidacao("O url da imagem deve ser informado.");
         }
     }
 }

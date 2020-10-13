@@ -38,6 +38,7 @@ namespace ProvaMaxima.Web
             services.AddSingleton(s => new MongoDbContexto(s.GetRequiredService<IOptions<MongoDbConfiguracao>>()));
 
             services.AddScoped<IRepositorioProduto, RepositorioProduto>();
+            services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
