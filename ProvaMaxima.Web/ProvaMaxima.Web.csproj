@@ -25,8 +25,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Login\login.component.ts" />
+    <None Remove="ClientApp\src\app\Produto\produto.component.ts" />
+    <None Remove="ClientApp\src\app\_models\Usuario.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProvaMaxima.Dominio\ProvaMaxima.Dominio.csproj" />
     <ProjectReference Include="..\ProvaMaxima.Repositorio\ProvaMaxima.Repositorio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Login\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Produto\produto.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\usuario.ts" />
   </ItemGroup>
 
   <ItemGroup>

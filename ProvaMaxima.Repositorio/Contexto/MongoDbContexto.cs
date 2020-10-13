@@ -20,7 +20,7 @@ namespace ProvaMaxima.Repositorio.Contexto
         }
         public IMongoCollection<T> ObtenhaColecao<T>() where T: class
         {
-            return _database.GetCollection<T>(nameof(T));
+            return _database.GetCollection<T>(typeof(T).Name);
         }
 }
 }

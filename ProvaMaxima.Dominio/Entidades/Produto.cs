@@ -7,7 +7,7 @@ namespace ProvaMaxima.Dominio.Entidades
 {
     public class Produto:Entidade
     {
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public string Nome { get; set; }
         public string ImagemUrl { get; set; }
         public decimal PrecoUnitario { get; set; }
