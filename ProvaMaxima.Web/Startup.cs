@@ -27,11 +27,11 @@ namespace ProvaMaxima.Web
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // In production, the Angular files will be served from this directory
-            //services.AddSpaStaticFiles(configuration =>
-            //{
-            //    configuration.RootPath = "ClientApp/dist";
-            //});
+            //In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
 
             //Configuração de instância MongoDB
             services.Configure<MongoDbConfiguracao>(Configuration.GetSection(nameof(MongoDbConfiguracao)));
@@ -59,7 +59,7 @@ namespace ProvaMaxima.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -77,9 +77,7 @@ namespace ProvaMaxima.Web
 
                 if (env.IsDevelopment())
                 {
-                    //spa.UseAngularCliServer(npmScript: "start");
-
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
+                    spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
