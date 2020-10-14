@@ -10,8 +10,29 @@ namespace ProvaMaxima.Web.Controllers
 {
     public class PedidoController : BaseController<Pedido, IRepositorioPedido>
     {
-        public PedidoController(IRepositorioPedido repositorioPedido):base(repositorioPedido)
+        public PedidoController(IRepositorioPedido repositorioPedido) : base(repositorioPedido)
         {
+        }
+
+        [HttpPost("ObtenhaValorDoFrete")]
+        public decimal ObtenhaValorDoFrete([FromBody] ItemPedido[] listaItens)
+        {
+            var numAleatorio = new Random().Next(5, 10);
+
+            if (listaItens != null && listaItens.Count() > 0)
+            {
+                return (decimal)listaItens.Sum(x => x.Quantidade) * numAleatorio;
+            }
+
+            return 0;
+        }
+
+        [HttpGet("ObtenhaCodigoPedido")]
+        public int ObtenhaCodigoPedido()
+        {
+            var listaDeTotal = _repositorio.ObtenhaTodos() ?? new List<Pedido>();
+
+            return listaDeTotal.Max(x=> x.Codigo) +1;
         }
     }
 }

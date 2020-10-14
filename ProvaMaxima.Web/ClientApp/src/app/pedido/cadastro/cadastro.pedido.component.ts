@@ -7,6 +7,8 @@ import { Produto } from '../../_modelos/produto';
 import { Cliente } from '../../_modelos/cliente';
 import { ClienteServico } from '../../_servicos/cliente/cliente.servico';
 import { ItemPedido } from '../../_modelos/itemPedido';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cadastro-pedido',
@@ -15,24 +17,31 @@ import { ItemPedido } from '../../_modelos/itemPedido';
 })
 export class CadastroPedidoComponent implements OnInit {
   public pedido: Pedido;
-  public valorItens: number;
-  public valorFrete: number;
-  public valorTotal: number;
+  public valorItens: number = 0;
+  public valorFrete: number = 0;
   public clienteSelecionado: Cliente;
   public listaDeItensDePedido: ItemPedido[];
-  public listaDeProdutos:Produto[];
-  public listaDeClientes:Cliente[];
+  public listaDeProdutos: Produto[];
+  public listaDeClientes: Cliente[];
   codigoAtualCliente = '';
   codigoAtual = '';
 
-  constructor(private pedidoServer: PedidoServico, private produtoServico: ProdutoServico, private clienteServico: ClienteServico) {
+  constructor(
+    private pedidoServico: PedidoServico,
+    private produtoServico: ProdutoServico,
+    private clienteServico: ClienteServico,
+    private router: Router) {
 
   }
 
   ngOnInit() {
-    this.listaDeItensDePedido = [];
+    this.pedido = new Pedido();
+    this.pedido.itensPedidos = []
+    this.listaDeItensDePedido = this.pedido.itensPedidos;
     this.filtroProduto();
     this.filtroCliente();
+
+    this.pedidoServico.obtenhaCodigoPedido().subscribe(cod => { this.pedido.codigo = cod})
   }
 
   selecaoDeProduto(chave: string) {
@@ -44,13 +53,15 @@ export class CadastroPedidoComponent implements OnInit {
       itemPedido.quantidade = 1;
 
       this.listaDeItensDePedido.push(itemPedido);
-      console.log(this.listaDeItensDePedido);
-        }
+
+      this.atualizeFreteETotal();
+    }
   }
 
   selecaoDeCliente(chave: string) {
     this.clienteSelecionado = this.filtre<Cliente[]>(this.listaDeClientes, chave)[0];
-    console.log(this.clienteSelecionado);
+
+    this.pedido.idCliente = this.clienteSelecionado.id;
   }
 
   filtroProduto() {
@@ -66,6 +77,34 @@ export class CadastroPedidoComponent implements OnInit {
       .pipe<Cliente[]>(map(lista => this.filtre<Cliente[]>(lista, this.codigoAtualCliente))).subscribe(resultado => {
         this.listaDeClientes = resultado;
       });
+  }
+
+  cadastrePedido() {
+    this.pedidoServico.post(this.pedido).subscribe(result => {
+      this.router.navigate(['/pedido']);
+    });
+  }
+
+  limpeCarrinho() {
+    this.listaDeItensDePedido = [];
+    this.atualizeFreteETotal();
+    
+  }
+
+  atualizeFreteETotal() {
+    this.pedidoServico.obtenhaFrete(this.listaDeItensDePedido).subscribe(json => {
+      this.valorFrete = json;
+      this.pedido.valorDoFrete = this.valorFrete;
+      });
+
+    this.valorItens = 0;
+    this.pedido.quantidadeTotalDeItens=0
+    this.listaDeItensDePedido.forEach((item, index) => {
+      this.valorItens += item.produto.precoUnitario * item.quantidade;
+      this.pedido.quantidadeTotalDeItens += item.quantidade;
+    })
+
+    this.pedido.valorTotal = this.valorItens + this.valorFrete;
   }
 
   filtre<T>(valores, valorPesquisa): T {

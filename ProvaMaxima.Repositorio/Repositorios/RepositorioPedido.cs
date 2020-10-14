@@ -1,4 +1,5 @@
-﻿using ProvaMaxima.Dominio.Contratos;
+﻿using MongoDB.Driver;
+using ProvaMaxima.Dominio.Contratos;
 using ProvaMaxima.Dominio.Entidades;
 using ProvaMaxima.Repositorio.Contexto;
 using System;

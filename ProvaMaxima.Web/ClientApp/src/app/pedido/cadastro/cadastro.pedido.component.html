@@ -1,5 +1,5 @@
 <div class="d-lg-inline m-2">
-  <h3>Novo Pedido #</h3>
+  <h3>Novo Pedido #{{this.pedido.codigo}}</h3>
 </div>
 
 <div class="shadow card m-2 rounded">
@@ -47,7 +47,7 @@
               </div>
             </td>
             <td>{{item.produto.nome}}</td>
-            <td><input style=" width: 63px;" type="number" class="form-control" [(ngModel)]="item.quantidade" min="1"> </td>
+            <td><input style=" width: 63px;" type="number" class="form-control" (change)="atualizeFreteETotal()" [(ngModel)]="item.quantidade" min="1"> </td>
             <td>X {{item.produto.precoUnitario |currency:"R$ "}}</td>
             <td>{{(item.quantidade * item.produto.precoUnitario) |currency:"R$ "}}</td>
           </tr>
@@ -68,23 +68,23 @@
         <div class="w-50">
           <div class="col" style="display:flex ">
             <p class="text-left" style="flex: 1 ">Itens</p>
-            <p class="text-right">DIDIM</p>
+            <p class="text-right">{{valorItens | currency:"R$ "}}</p>
           </div>
           <div class="col" style="display:flex ">
             <p class="text-left" style="flex: 1 ">Frete</p>
-            <p class="text-right">DIDIM</p>
+            <p class="text-right">{{valorFrete | currency:"R$ "}}</p>
           </div>
           <div class="col dropdown-divider">col</div>
           <div class="col" style="display:flex ">
             <p class="text-left" style="flex: 1 ">Total</p>
-            <p class="text-right">{{valorTotal}}</p>
+            <p class="text-right">{{(valorItens + valorFrete) | currency:"R$ "}}</p>
           </div>
         </div>
 
         <div class="w-50">
-          <div class="col">col</div>
-          <div class="col"></div>
-          <div class="col">col</div>
+          <div class="col"><button type="button" (click)="cadastrePedido()" class="btn btn-success btn-lg btn-block">Finalizar pedido</button></div>
+          <div class="col mb-2"></div>
+          <div class="col"><button type="button" (click)="limpeCarrinho()" class="btn btn-light btn-lg btn-block">Limpar carrinho</button></div>
         </div>
 
       </div>
