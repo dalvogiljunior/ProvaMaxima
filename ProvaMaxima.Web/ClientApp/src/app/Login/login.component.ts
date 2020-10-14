@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.usuario = new Usuario();
+    this.usuario.login = "talentosmaxima";
+    this.usuario.senha = "talentosmaxima";
     this.returnUrl = this.activetedRouter.snapshot.queryParams['returnUrl'];
   }
 
@@ -44,10 +46,5 @@ export class LoginComponent implements OnInit {
           this.mensagem = err.error;
         }
     );
-
-    //if (this.usuario.login == "gil" && this.usuario.senha == "gil") {
-    //  sessionStorage.setItem("autenticado", '1');
-    //  this.redirecione();
-    //}
   }
 }

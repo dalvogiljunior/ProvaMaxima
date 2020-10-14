@@ -8,9 +8,9 @@ using ProvaMaxima.Dominio.Entidades;
 
 namespace ProvaMaxima.Web.Controllers
 {
-    public class ProdutoController : BaseController<Produto, IRepositorioProduto>
+    public class ClienteController : BaseController<Cliente, IRepositorioCliente>
     {
-        public ProdutoController(IRepositorioProduto repositorioProduto):base(repositorioProduto)
+        public ClienteController(IRepositorioCliente repositorioCliente):base(repositorioCliente)
         {
         }
     }

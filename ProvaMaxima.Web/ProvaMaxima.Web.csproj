@@ -27,8 +27,19 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
     <None Remove="ClientApp\src\app\Login\login.component.ts" />
-    <None Remove="ClientApp\src\app\Produto\produto.component.ts" />
+    <None Remove="ClientApp\src\app\pedido\cadastro\cadastro.pedido.component.ts" />
+    <None Remove="ClientApp\src\app\pedido\pedido.component.ts" />
+    <None Remove="ClientApp\src\app\produto\pesquisa\pesquisa.produto.component.ts" />
+    <None Remove="ClientApp\src\app\produto\produto.component.css" />
+    <None Remove="ClientApp\src\app\produto\produto.component.html" />
+    <None Remove="ClientApp\src\app\produto\produto.component.ts" />
+    <None Remove="ClientApp\src\app\_modelos\cliente.ts" />
+    <None Remove="ClientApp\src\app\_modelos\itemPedido.ts" />
+    <None Remove="ClientApp\src\app\_modelos\pedido.ts" />
+    <None Remove="ClientApp\src\app\_modelos\produto.ts" />
     <None Remove="ClientApp\src\app\_modelos\Usuario.ts" />
+    <None Remove="ClientApp\src\app\_servicos\cliente\cliente.servico.ts" />
+    <None Remove="ClientApp\src\app\_servicos\pedido\pedido.servico.ts" />
     <None Remove="ClientApp\src\app\_servicos\produto\produto.servico.ts" />
     <None Remove="ClientApp\src\app\_servicos\usuario\usuario.servico.ts" />
   </ItemGroup>
@@ -41,8 +52,35 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Login\login.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Produto\produto.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pedido\cadastro\cadastro.pedido.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\pedido\pedido.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\produto\pesquisa\pesquisa.produto.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\produto\produto.component.css">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\produto\produto.component.html">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\produto\produto.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_modelos\itemPedido.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_modelos\pedido.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_modelos\produto.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_modelos\cliente.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_modelos\usuario.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_servicos\pedido\pedido.servico.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_servicos\cliente\cliente.servico.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\_servicos\produto\produto.servico.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_servicos\usuario\usuario.servico.ts" />
   </ItemGroup>
@@ -51,6 +89,51 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %282%29 - Copy.js">
+      <DependentUpon>cliente - Copy (2).js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %282%29 - Copy.js.map">
+      <DependentUpon>cliente - Copy (2).js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %282%29.js">
+      <DependentUpon>cliente.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %282%29.js.map">
+      <DependentUpon>cliente.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %283%29.js">
+      <DependentUpon>cliente.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy %283%29.js.map">
+      <DependentUpon>cliente.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy %282%29.js">
+      <DependentUpon>cliente - Copy.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy %282%29.js.map">
+      <DependentUpon>cliente - Copy.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy - Copy.js">
+      <DependentUpon>cliente - Copy - Copy.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy - Copy.js.map">
+      <DependentUpon>cliente - Copy - Copy.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy.js">
+      <DependentUpon>cliente - Copy.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy - Copy.js.map">
+      <DependentUpon>cliente - Copy.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy.js">
+      <DependentUpon>cliente.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\_modelos\cliente - Copy.js.map">
+      <DependentUpon>cliente.js.map</DependentUpon>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

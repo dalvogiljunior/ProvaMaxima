@@ -8,13 +8,10 @@ using ProvaMaxima.Dominio.Entidades;
 
 namespace ProvaMaxima.Web.Controllers
 {
-    [Route("api/[Controller]")]
-    public class UsuarioController : Controller
+    public class UsuarioController : BaseController<Usuario, IRepositorioUsuario>
     {
-        private readonly IRepositorioUsuario _repositorioUsuario;
-        public UsuarioController(IRepositorioUsuario repositorioUsuario)
+        public UsuarioController(IRepositorioUsuario repositorioUsuario) : base(repositorioUsuario)
         {
-            _repositorioUsuario = repositorioUsuario;
         }
 
         [HttpPost("VerifiqueUsuario")]
@@ -22,10 +19,10 @@ namespace ProvaMaxima.Web.Controllers
         {
             try
             {
-                var usuariPersistido = _repositorioUsuario.ObtenhaUsuarioPorLoginESenha(usuario);
+                var usuariPersistido = _repositorio.ObtenhaUsuarioPorLoginESenha(usuario);
 
-                if(usuariPersistido != null)
-                return Ok(usuariPersistido);
+                if (usuariPersistido != null)
+                    return Ok(usuariPersistido);
 
                 return BadRequest("Usuário ou senha não incorreto.");
             }

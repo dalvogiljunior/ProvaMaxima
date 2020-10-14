@@ -12,6 +12,7 @@
            }"
            [(ngModel)]="usuario.login"
            #login="ngModel"
+           value="talentosmaxima"
            required />
 
     <div class="invalid-feedback mb-2" *ngIf="login.invalid && (login.dirty || login.touched)">
@@ -30,6 +31,7 @@
            }"
            [(ngModel)]="usuario.senha"
            #senha="ngModel"
+           value="talentosmaxima"
            required />
 
     <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">

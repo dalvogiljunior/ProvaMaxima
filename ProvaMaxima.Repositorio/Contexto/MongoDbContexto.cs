@@ -20,7 +20,6 @@ namespace ProvaMaxima.Repositorio.Contexto
             _mongoDbConfiguracao = mongoDbConfiguracao.Value;
             _clientMongo = new MongoClient(mongoDbConfiguracao.Value.ConnectionString);
 
-
             if (_clientMongo != null)
             {
                 _database = _clientMongo.GetDatabase(mongoDbConfiguracao.Value.DatabaseName);
@@ -28,7 +27,7 @@ namespace ProvaMaxima.Repositorio.Contexto
                 SeedMongo();
             }
         }
-        public IMongoCollection<T> ObtenhaColecao<T>() where T: class
+        public IMongoCollection<T> ObtenhaColecao<T>() where T : class
         {
             return _database.GetCollection<T>(typeof(T).Name);
         }
@@ -45,6 +44,43 @@ namespace ProvaMaxima.Repositorio.Contexto
                 Login = "talentosmaxima",
                 Senha = "talentosmaxima"
             });
+
+            ObtenhaColecao<Produto>().InsertMany(new List<Produto>() 
+            {
+                new Produto()
+                {
+                    Codigo= "8689",
+                    Nome="Fardo 6UN Coca-Cola 600ml",
+                    PrecoUnitario=(decimal)17.34,
+                    ImagemUrl="http://localhost:4200/assets/icones/foto-coca-cola.png"
+                },
+                new Produto()
+                {
+                    Codigo= "8254",
+                    Nome="Fardo 6UN Fanta 600ml",
+                    PrecoUnitario=(decimal)16.64,
+                    ImagemUrl="http://localhost:4200/assets/icones/foto-fanta.png"
+                },
+            });
+
+            ObtenhaColecao<Cliente>().InsertMany(new List<Cliente>() 
+            {
+                new Cliente()
+                {
+                    Codigo= "1",
+                    Nome="Cliente 1"
+                },
+                new Cliente()
+                {
+                    Codigo= "2",
+                    Nome="Cliente 2"
+                },
+                new Cliente()
+                {
+                    Codigo= "3",
+                    Nome="Cliente 3"
+                },
+            });
         }
-}
+    }
 }
